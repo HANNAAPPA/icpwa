@@ -5,22 +5,32 @@
   <title>학교 알림 수신기</title>
   <link rel="manifest" href="manifest.json">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: "88ca455d-4461-4f3d-870c-007da6bda2c0",
-      safari_web_id: "web.onesignal.auto.0a199198-d5df-41c5-963c-72a0258657aa",
-      notifyButton: {
-        enable: true,
-      },
+
+  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+  <script>
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    OneSignalDeferred.push(async function(OneSignal) {
+      await OneSignal.init({
+        appId: "88ca455d-4461-4f3d-870c-007da6bda2c0",
+        safari_web_id: "web.onesignal.auto.0a199198-d5df-41c5-963c-72a0258657aa",
+        notifyButton: {
+          enable: false // 수동 버튼 쓰니까 false
+        },
+      });
+
+      // 버튼이 눌리면 알림 권한 요청
+      const btn = document.getElementById("subscribeBtn");
+      if (btn) {
+        btn.addEventListener("click", function () {
+          OneSignal.showSlidedownPrompt();
+        });
+      }
     });
-  });
   </script>
 </head>
 <body>
   <h2>📢 학교 알림 수신기</h2>
   <p>이 앱을 홈 화면에 추가하고 알림을 허용해주세요.</p>
+  <button id="subscribeBtn">🔔 알림 받기</button>
 </body>
 </html>
