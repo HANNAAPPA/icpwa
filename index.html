@@ -5,19 +5,18 @@
   <title>학교 알림 수신기</title>
   <link rel="manifest" href="manifest.json">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-  <script>
-    window.OneSignal = window.OneSignal || [];
-    OneSignal.push(function() {
-      OneSignal.init({
-        appId: "YOUR_ONESIGNAL_APP_ID",
-        safari_web_id: "YOUR_SAFARI_WEB_ID",
-        notifyButton: {
-          enable: true
-        },
-        allowLocalhostAsSecureOrigin: true
-      });
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "88ca455d-4461-4f3d-870c-007da6bda2c0",
+      safari_web_id: "web.onesignal.auto.0a199198-d5df-41c5-963c-72a0258657aa",
+      notifyButton: {
+        enable: true,
+      },
     });
+  });
   </script>
 </head>
 <body>
